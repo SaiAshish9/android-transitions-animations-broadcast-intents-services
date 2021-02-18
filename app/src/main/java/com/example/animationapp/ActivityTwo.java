@@ -15,7 +15,7 @@ public class ActivityTwo extends AppCompatActivity {
         if(firstData==null){
             return;
         }
-        String x = firstData.getString("firstMsg");
+        String x = firstData.getString("userMsg");
         final TextView secondText = (TextView) findViewById(R.id.textView);
         secondText.setText(x);
 

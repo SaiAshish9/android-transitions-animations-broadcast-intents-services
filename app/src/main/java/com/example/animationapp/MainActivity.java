@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -17,20 +18,28 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
     }
 
-    public void onclick(View v){
+    public void ClickMyButton(View v){
 
-        Intent i = new Intent(this,ActivityTwo.class);
-        final EditText firstInp = (EditText) findViewById(R.id.firstInp);
-        String userMessage = firstInp.getText().toString();
-        i.putExtra("userMsg",userMessage);
-        startActivity(i);
+        long x = System.currentTimeMillis()+100000;
+
+        while (System.currentTimeMillis()<x){
+
+            synchronized (this){
+                try {
+
+                    wait(x-System.currentTimeMillis());
+
+                }catch (Exception e){
+
+                }
+            }
+        }
+
+        TextView tv=(TextView) findViewById(R.id.textView);
+        tv.setText("btn clicked");
 
     }
-
 
 }
